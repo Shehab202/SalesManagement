@@ -12,8 +12,17 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const PurchaseInvoice = () => {
+  const navigate = useNavigate();
+  
+    const goToSalesInvoice = () => {
+    navigate("/salesInvoice");
+  }
+  const goToInventory = () => {
+    navigate("/inventory");
+  }
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -68,6 +77,7 @@ const PurchaseInvoice = () => {
 
   return (
     <div className="h-screen bg-slate-900 ">
+      <div>
       <form
         onSubmit={handleAddInvoice}
         className="flex flex-col gap-6 justify-center items-center h-full "
@@ -111,6 +121,11 @@ const PurchaseInvoice = () => {
         </div>
         <Button title={"اضافة الفاتورة"} width="md:w-40 w-32" />
       </form>
+      </div>
+        <div className="flex gap-4 justify-center my-7">
+          <Button title={"الذهاب للمخزون "} width="md:w-40 w-32" handleClick={goToInventory}/>
+          <Button title={"الذهاب للمبيعات"} width="md:w-40 w-32"  handleClick={ goToSalesInvoice}/>
+        </div>
     </div>
   );
 };

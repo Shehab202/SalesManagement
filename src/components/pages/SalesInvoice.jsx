@@ -12,8 +12,17 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const SalesInvoice = () => {
+const navigate = useNavigate();
+const goToInventory = () => {
+  navigate("/inventory");
+}
+const goToPurchaseInvoice = () => {
+  navigate("/purchaseInvoice");
+}
+  
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -46,14 +55,15 @@ const SalesInvoice = () => {
       const productSnap = await getDoc(productsRef);
       if (productSnap.exists()) {
         await updateDoc(productsRef, {
-          quantity: productSnap.data().quantity + parseInt(quantity),price: parseFloat(price),
+          quantity: productSnap.data().quantity + parseInt(quantity),
+          price: parseFloat(price),
         });
-      }else{
-        await setDoc(productsRef,{
+      } else {
+        await setDoc(productsRef, {
           productName,
           price: parseFloat(price),
           quantity: parseInt(quantity),
-        })
+        });
       }
       setProductName("");
       setPrice("");
@@ -67,6 +77,7 @@ const SalesInvoice = () => {
 
   return (
     <div className="h-screen bg-slate-900 ">
+       <div>
       <form
         onSubmit={handleAddInvoice}
         className="flex flex-col gap-6 justify-center items-center h-full "
@@ -109,9 +120,14 @@ const SalesInvoice = () => {
           </p>
         </div>
         <Button title={"اضافة الفاتورة"} width="md:w-40 w-32" />
+      
       </form>
+        <div className="flex gap-4 justify-center my-7">
+          <Button title={"الذهاب للمخزون "} width="md:w-40 w-32" handleClick={goToInventory}/>
+          <Button title={"الذهاب للمشتريات"} width="md:w-40 w-32"  handleClick={goToPurchaseInvoice}/>
+        </div>
+       </div>
     </div>
   );
 };
-
 export default SalesInvoice;

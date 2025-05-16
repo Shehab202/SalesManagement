@@ -3,8 +3,19 @@ import React, { useState, useEffect } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import Loader from "../Loader";
+import { useNavigate } from "react-router-dom";
+import Button from "../Button";
 
 const Inventory = () => {
+const navigate = useNavigate();
+
+  const goToSalesInvoice = () => {
+  navigate("/salesInvoice");
+}
+const goToPurchaseInvoice = () => {
+  navigate("/purchaseInvoice");
+}
+  
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -55,6 +66,10 @@ const Inventory = () => {
           </p>
         </>
       )}
+        <div className="flex gap-4 justify-center my-7">
+          <Button title={"الذهاب للمشتريات "} width="md:w-40 w-32" handleClick={goToPurchaseInvoice}/>
+          <Button title={"الذهاب للمبيعات"} width="md:w-40 w-32"  handleClick={ goToSalesInvoice}/>
+        </div>
     </div>
     </div>
   );

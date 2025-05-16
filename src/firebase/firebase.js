@@ -1,4 +1,3 @@
-
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -32,4 +31,3 @@ export function signIn(email, password) {
 export function signUp(email, password) {
   return createUserWithEmailAndPassword(auth, email, password);
 }
-
