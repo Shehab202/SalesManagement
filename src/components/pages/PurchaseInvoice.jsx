@@ -42,11 +42,12 @@ const PurchaseInvoice = () => {
       toast.error("يرجى ملء جميع الحقول المطلوبة");
       return;
     }
+   
     try {
       await addDoc(collection(db, "purchaseInvoice"), {
         productName: productName,
         price: parseFloat(price),
-        quantity: parseInt(quantity),
+        quantity: parseInt(quantity)||0,
         discount: parseFloat(discount),
         total: calculateTotal(),
         createdAt: Timestamp.now(),
