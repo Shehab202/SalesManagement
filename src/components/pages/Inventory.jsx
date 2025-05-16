@@ -36,16 +36,16 @@ const goToPurchaseInvoice = () => {
   }
 
   return (
-    <div className=" bg-slate-900 md:p-8 ">
-    <div className="w-5/6 mx-auto flex flex-col items-center min-h-screen">
-      <h2 className="sm:text-2xl font-bold mb-4 text-gray-200">المخزون</h2>
+    <div className=" bg-slate-800 pt-8 min-h-screen">
+    <div className=" md:w-5/6 p-2 mx-auto flex flex-col items-center ">
+      <h2 className="text-2xl font-bold mb-5 text-white">المخزون</h2>
       {products.length === 0 ? (
         <p className="text-lg font-bold mt-4 sm:mt-5 text-gray-200">لا توجد منتجات في المخزون</p>
       ) : (
         <>
           <table className="w-full border-collapse "dir="rtl">
             <thead className=" text-gray-200 ">
-              <tr className="bg-slate-800 " >
+              <tr className="bg-slate-700 " >
                 <th className="border p-2">اسم المنتج</th>
                 <th className="border p-2">السعر</th>
                 <th className="border p-2">العدد المتاح</th>
@@ -53,7 +53,7 @@ const goToPurchaseInvoice = () => {
             </thead>
             <tbody>
               {products.map((product) => (
-                <tr key={product.id} className="border  text-sky-200">
+                <tr key={product.id} className="border  text-sky-100">
                   <td className="border p-3 ">{product.productName}</td>
                   <td className="border p-3">{product.price}</td>
                   <td className="border p-3">{product.quantity}</td>

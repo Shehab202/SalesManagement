@@ -77,46 +77,52 @@ const PurchaseInvoice = () => {
   };
 
   return (
-    <div className="h-screen bg-slate-900 ">
+    <div className="h-screen bg-slate-800 pt-10">
       <div>
       <form
+      
         onSubmit={handleAddInvoice}
         className="flex flex-col gap-6 justify-center items-center h-full "
       >
-        <h2 className="text-2xl font-bold mb-4 text-amber-200">
+        <h2 className="text-2xl font-bold mb-4 text-white">
           فاتورة المشتريات
         </h2>
 
         <Input
+        direction={false}
           value={productName}
           setValue={setProductName}
           placeholder="اسم المنتج"
-          width="md:w-3/6 w-2/6"
+          width="md:w-3/6 w-5/6"
           type={"text"}
         />
         <Input
+                direction={false}
+
           value={price}
           setValue={setPrice}
           placeholder=" سعر المنتج"
-          width="md:w-3/6 w-2/6"
+          width="md:w-3/6 w-5/6"
           type={"number"}
         />
         <Input
+                direction={false}
+
           value={quantity}
           setValue={setQuantity}
           placeholder="الكمية"
-          width="md:w-3/6 w-2/6"
+          width="md:w-3/6 w-5/6"
           type={"number"}
         />
-        <div className="flex gap-4 md:w-3/6 w-2/6 ">
+        <div className="flex flex-col justify-center items-center md:flex-row gap-4 md:w-3/6 w-5/6 ">
           <Input
             value={discount}
             setValue={setDiscount}
             placeholder=" %نسبة الخصم"
-            width="md:w-3/6 w-2/6"
+            width="md:w-3/6 w-5/6"
             type={"number"}
           />
-          <p className="text-amber-200 font-bold text-center  bg-slate-800 border border-slate-600 rounded-lg py-1 w-2/6">
+          <p className="text-amber-200 font-bold text-center  bg-slate-800 border border-slate-600 rounded-lg py-1 w-3/6">
             {calculateTotal()}
           </p>
         </div>
