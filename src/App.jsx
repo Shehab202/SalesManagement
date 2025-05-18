@@ -15,6 +15,8 @@ import PurchaseInvoice from "./components/pages/PurchaseInvoice";
 import { Toaster } from "react-hot-toast";
 import Loader from "./components/Loader";
 const ProtectedRoute = ({ children }) => {
+  
+  const Navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -22,7 +24,7 @@ const ProtectedRoute = ({ children }) => {
       setIsAuthenticated(user);
       setIsLoading(false);
       if (!user) {
-        navigate("/login");
+        Navigate("/login");
       }
     });
     return () => unsubscribe();
@@ -93,7 +95,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<Navigate to="/login" />} />
+<Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   );
